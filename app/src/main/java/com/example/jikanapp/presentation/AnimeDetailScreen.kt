@@ -23,7 +23,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.*
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
+import coil.compose.AsyncImagePainter
+import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
+import coil.size.Size
 import com.example.jikanapp.presentation.viewmodels.AnimeDetailViewmodel
 import com.example.jikanapp.ui.theme.*
 import com.example.jikanapp.utils.Constants
@@ -123,38 +126,55 @@ fun AnimePosterHeader(anime: Anime) {
     val posterUrl = anime.images.jpg.large_image_url.ifBlank {
         anime.images.jpg.image_url
     }
+    val painter = rememberAsyncImagePainter(
+        model = ImageRequest.Builder(context)
+            .data(posterUrl)
+            .size(Size.ORIGINAL)
+            .crossfade(true)
+            .build()
+    )
+    val state = painter.state
 
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .height(400.dp)
     ) {
-        if (posterUrl.isBlank()) {
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(DeepCharcoal),
-                contentAlignment = Alignment.Center
-            ) {
-                Icon(
-                    imageVector = Icons.Rounded.ImageNotSupported,
-                    contentDescription = anime.title,
-                    modifier = Modifier.size(80.dp),
-                    tint = SilverGray.copy(alpha = 0.3f)
+        when {
+            posterUrl.isBlank() || state is AsyncImagePainter.State.Error -> {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(DeepCharcoal),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(
+                        imageVector = Icons.Rounded.ImageNotSupported,
+                        contentDescription = anime.title,
+                        modifier = Modifier.size(80.dp),
+                        tint = SilverGray.copy(alpha = 0.3f)
+                    )
+                }
+            }
+            state is AsyncImagePainter.State.Loading -> {
+                CircularProgressIndicator(
+                    color = DeepCharcoal,
+                    modifier = Modifier.size(28.dp),
+                    strokeWidth = 2.5.dp
                 )
             }
-        } else {
-            AsyncImage(
-                model = ImageRequest.Builder(context)
-                    .data(posterUrl)
-                    .crossfade(true)
-                    .build(),
-                contentDescription = anime.title,
-                modifier = Modifier.fillMaxSize(),
-                contentScale = ContentScale.Crop
-            )
+            state is AsyncImagePainter.State.Success -> {
+                AsyncImage(
+                    model = ImageRequest.Builder(context)
+                        .data(posterUrl)
+                        .crossfade(true)
+                        .build(),
+                    contentDescription = anime.title,
+                    modifier = Modifier.fillMaxSize(),
+                    contentScale = ContentScale.Crop
+                )
+            }
         }
-
         Box(
             modifier = Modifier
                 .fillMaxSize()
