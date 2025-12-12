@@ -96,5 +96,16 @@ Auto-sorted Top Anime list based on rank
 
 Responsive layouts
 
+#Images 
+<div style="display: flex; gap: 10px;">
+  <img src="https://github.com/user-attachments/assets/c01e4bee-0cc8-4a2d-8d54-865c8203c057" width="30%" />
+  <img src="https://github.com/user-attachments/assets/c5956628-25e1-4959-9805-3569c43f27a5" width="30%" />
+  <img src="https://github.com/user-attachments/assets/84e52e39-0f35-483f-920f-73a5a6b787fb" width="30%" />
+</div>
+<div style="display: flex; gap: 10px;">
+  <img src="https://github.com/user-attachments/assets/e4155b8f-9928-4516-8902-b9c42405a853" width="30%" />
+  <img src="https://github.com/user-attachments/assets/460a98a4-d282-4d36-9834-0f7eb68d6471" width="30%" />
+</div>
+
 #App demonstration link 
 Google Drive :  https://drive.google.com/file/d/1lTR4NBLunocNtAaq2WTCReTrfr6kGzB7/view?usp=sharing
