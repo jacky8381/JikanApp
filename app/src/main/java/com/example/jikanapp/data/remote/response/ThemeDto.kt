@@ -1,0 +1,8 @@
+package com.example.jikanapp.data.remote.response
+
+data class ThemeDto(
+    val mal_id: Int?,
+    val name: String?,
+    val type: String?,
+    val url: String?
+)
