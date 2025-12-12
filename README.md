@@ -1,6 +1,6 @@
 📱 JikanApp — Anime Explorer
 
-A modern anime discovery app built with Kotlin, Jetpack Compose, and Clean MVVM Architecture, featuring offline caching, smooth UI, and dynamic detail screens powered by the Jikan API.
+A modern anime discovery app built with Kotlin, Jetpack Compose, and Clean MVVM Architecture, featuring offline caching, smooth UI, and dynamic detail screens.
 
 	
 🚀 Tech Stack
