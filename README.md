@@ -95,3 +95,6 @@ Neon-like theme accents & rounded cards
 Auto-sorted Top Anime list based on rank
 
 Responsive layouts
+
+#App demonstration link 
+Google Drive :  https://drive.google.com/file/d/1lTR4NBLunocNtAaq2WTCReTrfr6kGzB7/view?usp=sharing
